@@ -24,7 +24,7 @@ Tested on Unity 2020.2.f1, windows 10, macOS.
 ## Sources
 
 - Standard Male Figure(CC BY 3.0) - https://clara.io/view/d49ee603-8e6c-4720-bd20-9e3d7b13978a
-- ë‰ìÏëÂçÿés(CC BY 4.0) - https://sketchfab.com/3d-models/01799eb873164aa0aa9791526f7c865d
+- Tainan Daina City(CC BY 4.0) - https://sketchfab.com/3d-models/01799eb873164aa0aa9791526f7c865d
 - Hintze Hall, NHM London [point cloud](CC BY-NC 4.0) - https://sketchfab.com/3d-models/hintze-hall-nhm-london-point-cloud-be909aa8afa545118be6d36397529e2f
 - Choshi-Otaki Falls, Oirase Valley, Aomori(CC BY-NC-SA 4.0) - https://sketchfab.com/3d-models/choshi-otaki-falls-oirase-valley-aomori-ea1ef9e7f82f418ea0776ceb6894ebd1
 
