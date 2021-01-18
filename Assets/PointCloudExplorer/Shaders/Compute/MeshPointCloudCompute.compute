@@ -1,0 +1,231 @@
+﻿#pragma kernel Update
+#pragma kernel Frustum
+#pragma kernel Plane
+#pragma kernel Circle
+#pragma kernel Rectangle
+#pragma kernel Rotate
+#pragma kernel Invalidate
+
+#define THREAD [numthreads(512,1,1)]
+#define DISCARD if((int)id.x >= _InstancesCount) return;
+
+#include "Assets/Common/Shaders/Random.hlsl"
+#include "Assets/Common/Shaders/Quaternion.hlsl"
+#include "Assets/Common/Shaders/Easing.hlsl"
+#include "Assets/Common/Shaders/Noise/SimplexNoise3D.hlsl"
+
+#include "../Common/Point.hlsl"
+#include "../Common/Path.hlsl"
+
+#ifndef HALF_PI
+#define HALF_PI 1.57079632679
+#endif
+
+#ifndef PI
+#define PI 3.14159265359
+#endif
+
+#ifndef TWO_PI
+#define TWO_PI 6.28318530718
+#endif
+
+RWStructuredBuffer<Point> _PointBuffer;
+RWStructuredBuffer<float3> _OriginBuffer;
+
+int _InstancesCount;
+float _Time;
+float _DT;
+
+float3 _Target;
+float _TargetForce;
+float _InvTargetDistance;
+float _InvScale;
+
+struct PointLight {
+  float3 position;
+  float invDistance;
+};
+
+uint _PointLightCount;
+StructuredBuffer<PointLight> _PointLightBuffer;
+
+float _Decay;
+float _Deceleration;
+float _Debug;
+
+float4x4 _Transform, _InvTransform;
+float4x4 _View, _Projection;
+float4x4 _ViewProjection;
+float4x4 _MVP;
+float _Near, _Far;
+float _InvFrustumRadius;
+
+float3 _PlaneNormal;
+float _PlaneDistance, _PlaneWidth;
+
+float3 _CircleCenter;
+float _CircleRadius, _CircleWidth;
+
+float _RectangleWidth, _RectangleHeight, _RectangleDepth;
+
+float3 _WorldRotateCenter;
+float _RotateAngleQuadInOut, _RotateAngleExpoInOut;
+
+void Initialize(inout Point pt, float3 origin) {
+  pt.position.xyz = origin.xyz;
+  pt.lifetime = 1.0;
+  pt.scattering = false;
+}
+
+float3 ProjectVectorOnPlane(float3 v, float3 normal) {
+  float denominator = length(normal);
+  if (denominator <= 0) return float3(0, 0, 0);
+  float scalar = dot(normal, v) / denominator;
+  return normal * scalar;
+}
+
+THREAD
+void Update(uint3 id : SV_DispatchThreadID)
+{
+  DISCARD
+
+  Point pt = _PointBuffer[id.x];
+  float3 origin = _OriginBuffer[id.x];
+
+  float3 world = mul(_Transform, float4(origin.xyz, 1)).xyz;
+  float d = distance(world.xz, _Target.xz) * _InvTargetDistance;
+  float t = saturate(1.0 - d);
+  t = saturate(t * _TargetForce);
+
+  pt.size = saturate(pt.size - _Decay * _DT);
+  pt.size = lerp(pt.size, 1.0, _Debug); // debug
+  // pt.color.a = saturate(pt.color.a - _Decay * _DT);
+  pt.color.a = saturate(pt.color.a - _DT);
+
+  if (pt.scattering && pt.lifetime > 0.0) {
+    float3 vel = float3(0, 0, 1) + snoise(world + float3(0, 0, _Time)).xyz;
+    vel *= _InvScale * 0.35;
+    float dt = _DT * pt.mass;
+    pt.position.xyz += vel * dt;
+    pt.lifetime -= dt;
+  }
+  else {
+    pt.lifetime = lerp(pt.lifetime, 0.5, _DT); // to ordinary size
+    pt.scattering = t > 0.5;
+  }
+
+  if (pt.lifetime <= 0) {
+    Initialize(pt, origin);
+  }
+
+  _PointBuffer[id.x] = pt;
+}
+
+THREAD
+void Frustum(uint3 id : SV_DispatchThreadID)
+{
+  DISCARD
+
+  Point pt = _PointBuffer[id.x];
+
+  float4 world = mul(_Transform, float4(pt.position, 1.0));
+  float4 view = mul(_View, world);
+  float4 clip = mul(_Projection, view);
+  clip.xyz /= clip.w;
+  // float depth01 = saturate(1.0 - (view.z - _Near) / (_Far - _Near));
+  // depth01 = pow(depth01, 0.5);
+  float depth01 = clip.z;
+
+  float size = step(-1.0, clip.x) * step(clip.x, 1.0) * step(-1.0, clip.y) * step(clip.y, 1.0);
+  size *= step(clip.w, 0.0) * depth01;
+  float r = saturate(length(view.xyz) * _InvFrustumRadius);
+  // r = pow(r, 0.5);
+  size = max(size, 1.0 - r);
+
+  pt.size = lerp(pt.size, size, _DT);
+
+  _PointBuffer[id.x] = pt;
+}
+
+THREAD
+void Plane(uint3 id : SV_DispatchThreadID)
+{
+  DISCARD
+
+  Point pt = _PointBuffer[id.x];
+
+  float3 world = mul(_Transform, float4(pt.position.xyz, 1.0)).xyz;
+  float proj = dot(world, _PlaneNormal);
+  float ad = saturate(1.0 - abs(_PlaneDistance - proj) / _PlaneWidth);
+  pt.scattering = pt.scattering || (ad >= 0.5);
+  pt.color.a = max(pt.color.a, ad);
+  pt.size = max(pt.size, ad);
+
+  _PointBuffer[id.x] = pt;
+}
+
+THREAD
+void Circle(uint3 id : SV_DispatchThreadID)
+{
+  DISCARD
+
+  Point pt = _PointBuffer[id.x];
+
+  float d = distance(pt.position.xyz, _CircleCenter.xyz);
+  float ad = saturate(1.0 - abs(_CircleRadius - d) / _CircleWidth);
+  pt.color.a = max(ad, pt.color.a);
+  pt.size = max(pt.size, ad);
+  // if (ad > 0.5) pt.scattering = true;
+
+  _PointBuffer[id.x] = pt;
+}
+
+THREAD
+void Rectangle(uint3 id : SV_DispatchThreadID)
+{
+  DISCARD
+
+  Point pt = _PointBuffer[id.x];
+  float3 world = mul(_Transform, float4(pt.position.xyz, 1.0)).xyz;
+  float size = step(world.y, _RectangleHeight);
+  pt.size = lerp(pt.size, size, _DT * 2.0);
+
+  _PointBuffer[id.x] = pt;
+}
+
+THREAD
+void Rotate(uint3 id : SV_DispatchThreadID)
+{
+  DISCARD
+
+  Point pt = _PointBuffer[id.x];
+  float3 worldOrigin = mul(_Transform, float4(_OriginBuffer[id.x].xyz, 1)).xyz;
+
+  float2 sxz = worldOrigin.xz;
+  float2 cxz = _WorldRotateCenter.xz;
+  float2 dir = cxz - sxz;
+  float l = length(dir);
+
+  float aoff01 = snoise(float3(l * 0.1, pt.mass, worldOrigin.y * 0.05)).x;
+  aoff01 = saturate((aoff01 + 1.0) * 0.5);
+  float ang = (atan2(dir.y, dir.x) + PI) + lerp(_RotateAngleQuadInOut, _RotateAngleExpoInOut, aoff01);
+  float dx = cos(ang);
+  float dz = sin(ang);
+  float3 destination = mul(_InvTransform, float4(dx * l + _WorldRotateCenter.x, worldOrigin.y, dz * l + _WorldRotateCenter.z, 1)).xyz;
+
+  // pt.position.xyz = destination;
+  pt.position.xyz = lerp(pt.position.xyz, destination, _DT * 2.0);
+
+  _PointBuffer[id.x] = pt;
+}
+
+THREAD
+void Invalidate(uint3 id : SV_DispatchThreadID)
+{
+  DISCARD
+
+  Point pt = _PointBuffer[id.x];
+  pt.size = 0;
+  _PointBuffer[id.x] = pt;
+}
+

@@ -1,0 +1,100 @@
+﻿#pragma kernel Project
+#pragma kernel Circle
+#pragma kernel Rectangle
+
+#define THREAD [numthreads(512,1,1)]
+#define DISCARD if((int)id.x >= _InstancesCount) return;
+
+#include "Assets/Common/Shaders/Random.hlsl"
+#include "Assets/Common/Shaders/Quaternion.hlsl"
+#include "Assets/Common/Shaders/Easing.hlsl"
+#include "Assets/Common/Shaders/Noise/SimplexNoise3D.hlsl"
+
+#include "../Common/Voxel.hlsl"
+#include "../Common/Point.hlsl"
+
+#ifndef HALF_PI
+#define HALF_PI 1.57079632679
+#endif
+
+#ifndef PI
+#define PI 3.14159265359
+#endif
+
+#ifndef TWO_PI
+#define TWO_PI 6.28318530718
+#endif
+
+RWStructuredBuffer<Voxel> _VoxelBuffer;
+RWStructuredBuffer<Point> _PointBuffer;
+
+int _InstancesCount;
+
+float4x4 _Transform;
+float _Unit;
+
+float _Time, _DT;
+float _Decay;
+
+THREAD
+void Project(uint3 id : SV_DispatchThreadID)
+{
+  DISCARD
+
+  Point pt = _PointBuffer[id.x];
+  Voxel v = _VoxelBuffer[id.x];
+
+  float3 position = mul(_Transform, float4(pt.position.xyz, 1)).xyz;
+  position = floor(position / _Unit) * _Unit;
+  v.position = position;
+  v.rotation = float4(0, 0, 0, 1);
+  v.size = 1.0;
+  v.color = pt.color;
+
+  _VoxelBuffer[id.x] = v;
+}
+
+float3 _CircleCenter;
+float _CircleRadius, _CircleWidth;
+float _CircleDisplay;
+
+THREAD
+void Circle(uint3 id : SV_DispatchThreadID)
+{
+  DISCARD
+
+  // Point pt = _PointBuffer[id.x];
+  Voxel v = _VoxelBuffer[id.x];
+
+  float3 dir = _CircleCenter.xyz - v.position.xyz;
+  float l = length(dir.xz);
+  float d = l / _CircleRadius;
+  float size = lerp(v.size, _CircleDisplay, step(0, d));
+  v.size = lerp(v.size, size, _DT * 5.0);
+  // v.rotation = q_slerp(v.rotation, );
+
+  float3 axis = normalize(cross(dir, float3(0, 1, 0)));
+  float r = nrand(v.position.xy + v.position.yz);
+  // float d01 = saturate(1.0 - d);
+  // float d01 = sin(l * 0.1 + _CircleRadius * 0.1);
+  float d01 = l * 0.1 + _CircleRadius * 0.1;
+  // v.rotation = rotate_angle_axis(d01 * TWO_PI, axis);
+
+  _VoxelBuffer[id.x] = v;
+}
+
+float _RectangleWidth, _RectangleHeight, _RectangleDepth;
+
+THREAD
+void Rectangle(uint3 id : SV_DispatchThreadID)
+{
+  DISCARD
+
+  // Point pt = _PointBuffer[id.x];
+  Voxel v = _VoxelBuffer[id.x];
+
+  float size = step(v.position.y, _RectangleHeight);
+  v.size = lerp(v.size, size, _DT * 2.0);
+
+  _VoxelBuffer[id.x] = v;
+}

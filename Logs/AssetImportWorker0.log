@@ -1,0 +1,287 @@
+Using pre-set license
+Built from '2020.2/release' branch; Version is '2020.2.1f1 (270dd8c3da1c) revision 2559448'; Using compiler version '192528614'; Build Type 'Release'
+OS: 'Windows 10  (10.0.0) 64bit' Language: 'ja' Physical Memory: 32609 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
+
+ COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\2020.2.1f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+D:/Developer/Playground/PointCloudExplorer
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+65030
+Successfully changed project path to: D:/Developer/Playground/PointCloudExplorer
+D:/Developer/Playground/PointCloudExplorer
+Using Asset Import Pipeline V2.
+Refreshing native plugins compatible for Editor in 6.99 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2020.2.1f1 (270dd8c3da1c)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.2.1f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path D:/Developer/Playground/PointCloudExplorer/Assets
+GfxDevice: creating device client; threaded=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 2080 with Max-Q Design (ID=0x1e90)
+    Vendor:   
+    VRAM:     8010 MB
+    Driver:   27.21.14.5709
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.2.1f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.2.1f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.2.1f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56892
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.2.1f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.001959 seconds.
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 6.11 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.043 seconds
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.000070 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.10 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.713 seconds
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.06 seconds
+Refreshing native plugins compatible for Editor in 0.10 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 421 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 42.8 MB.
+System memory in use after: 42.8 MB.
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 864.
+Total: 1.830900 ms (FindLiveObjects: 0.120900 ms CreateObjectMapping: 0.032200 ms MarkObjects: 1.622800 ms  DeleteObjects: 0.053300 ms)
+
+========================================================================
+Received Import Request.
+  path: Assets/PointCloudExplorer/Scripts/SurfaceSampler/SurfacePoint.cs
+  artifactKey: Guid(6c7729585ce90e047bd770ef84a4e230) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PointCloudExplorer/Scripts/SurfaceSampler/SurfacePoint.cs using Guid(6c7729585ce90e047bd770ef84a4e230) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6ca0cfec65d8495fbc2c1e486b23ceae') in 0.032416 seconds
+  Import took 0.033510 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.891699 seconds.
+  path: Assets/PointCloudExplorer/Scripts/SurfaceSampler
+  artifactKey: Guid(c1d744dc206703e49bae9f616faa5dc8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PointCloudExplorer/Scripts/SurfaceSampler using Guid(c1d744dc206703e49bae9f616faa5dc8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd084b6f666bf541519b0c541d7fceb21') in 0.001686 seconds
+  Import took 0.002489 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.000087 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.11 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.784 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.11 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 375 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 40.1 MB.
+System memory in use after: 40.1 MB.
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 864.
+Total: 1.467600 ms (FindLiveObjects: 0.080000 ms CreateObjectMapping: 0.021500 ms MarkObjects: 1.329600 ms  DeleteObjects: 0.034700 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.000147 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.12 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.684 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.10 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 375 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 41.1 MB.
+System memory in use after: 41.1 MB.
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 864.
+Total: 1.243100 ms (FindLiveObjects: 0.075500 ms CreateObjectMapping: 0.012200 ms MarkObjects: 1.144600 ms  DeleteObjects: 0.010000 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 33.159509 seconds.
+  path: Assets/PointCloudExplorer/Models/Human
+  artifactKey: Guid(7f26cc2f9eb2c644789421bfeb50e486) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PointCloudExplorer/Models/Human using Guid(7f26cc2f9eb2c644789421bfeb50e486) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '38525f586ec7a9a3454234712f3e4cc5') in 0.002940 seconds
+  Import took 0.003898 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.160287 seconds.
+  path: Assets/PointCloudExplorer/Models/Human/figure5k@Jumping.fbx
+  artifactKey: Guid(ec207463c1fcb6840bb90cdca8b8983e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PointCloudExplorer/Models/Human/figure5k@Jumping.fbx using Guid(ec207463c1fcb6840bb90cdca8b8983e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '792e88a2329209e370c88ea37ef2ba10') in 0.173326 seconds
+  Import took 0.174501 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.534319 seconds.
+  path: Assets/PointCloudExplorer/Models/Human/figure5k@Kneeling.fbx
+  artifactKey: Guid(3e7726b66431a2f438d583239d967315) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PointCloudExplorer/Models/Human/figure5k@Kneeling.fbx using Guid(3e7726b66431a2f438d583239d967315) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '232a9f32cece5ce189797d1b4afa382f') in 0.029322 seconds
+  Import took 0.030586 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.003753 seconds.
+  path: Assets/PointCloudExplorer/Models/Human/figure5k@Kneeling.fbx
+  artifactKey: Guid(3e7726b66431a2f438d583239d967315) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PointCloudExplorer/Models/Human/figure5k@Kneeling.fbx using Guid(3e7726b66431a2f438d583239d967315) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '232a9f32cece5ce189797d1b4afa382f') in 0.028973 seconds
+  Import took 0.030319 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.210826 seconds.
+  path: Assets/PointCloudExplorer/Models/Human/figure5k@Landing.fbx
+  artifactKey: Guid(6c011209cf3f24844b9899ac9461f589) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PointCloudExplorer/Models/Human/figure5k@Landing.fbx using Guid(6c011209cf3f24844b9899ac9461f589) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4ef2c8a9b04858f41047b90444572b8c') in 0.022105 seconds
+  Import took 0.023769 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 5.639454 seconds.
+  path: Assets/PointCloudExplorer/Models/Human/HumanAnimatorController.controller
+  artifactKey: Guid(11df0bed1531dca4791da18e68fba653) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PointCloudExplorer/Models/Human/HumanAnimatorController.controller using Guid(11df0bed1531dca4791da18e68fba653) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '42ffb8010d040e0a8b0b5ea937fe7937') in 0.009200 seconds
+  Import took 0.010494 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.000044 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.13 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.711 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.11 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 375 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 55.4 MB.
+System memory in use after: 55.5 MB.
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 908.
+Total: 1.226100 ms (FindLiveObjects: 0.070000 ms CreateObjectMapping: 0.012500 ms MarkObjects: 1.131200 ms  DeleteObjects: 0.011600 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 46.542710 seconds.
+  path: Assets/PointCloudExplorer/Shaders
+  artifactKey: Guid(0d5b5474610456d47a34a48ff688af9e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PointCloudExplorer/Shaders using Guid(0d5b5474610456d47a34a48ff688af9e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c25262fd66c7e1e837c7437a9670ee29') in 0.002831 seconds
+  Import took 0.003772 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.010509 seconds.
+  path: Assets/PointCloudExplorer/Shaders
+  artifactKey: Guid(0d5b5474610456d47a34a48ff688af9e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PointCloudExplorer/Shaders using Guid(0d5b5474610456d47a34a48ff688af9e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c25262fd66c7e1e837c7437a9670ee29') in 0.001477 seconds
+  Import took 0.002261 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.719050 seconds.
+  path: Assets/PointCloudExplorer/Shaders/Render
+  artifactKey: Guid(fa8b7f46cfd95af4f85c009918b58461) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PointCloudExplorer/Shaders/Render using Guid(fa8b7f46cfd95af4f85c009918b58461) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '709d01e9b29d5f43e0c08a6eb36154c0') in 0.001435 seconds
+  Import took 0.002347 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.766003 seconds.
+  path: Assets/PointCloudExplorer/Shaders/Render/Frustum.shader
+  artifactKey: Guid(53fb657270078d743b6d982af116b493) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PointCloudExplorer/Shaders/Render/Frustum.shader using Guid(53fb657270078d743b6d982af116b493) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '99af5710399fb8200a8329ff0a37f578') in 0.013665 seconds
+  Import took 0.014681 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.009604 seconds.
+  path: Assets/PointCloudExplorer/Shaders/Render/Frustum.shader
+  artifactKey: Guid(53fb657270078d743b6d982af116b493) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PointCloudExplorer/Shaders/Render/Frustum.shader using Guid(53fb657270078d743b6d982af116b493) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '99af5710399fb8200a8329ff0a37f578') in 0.001912 seconds
+  Import took 0.002761 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.858272 seconds.
+  path: Assets/PointCloudExplorer/Shaders/Render/Wall.shader
+  artifactKey: Guid(d721fafeca5a5a049b7bf58c5346ddec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PointCloudExplorer/Shaders/Render/Wall.shader using Guid(d721fafeca5a5a049b7bf58c5346ddec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fe8f7665883c88aa07b18b627da4ac98') in 0.002214 seconds
+  Import took 0.003316 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.001432 seconds.
+  path: Assets/PointCloudExplorer/Shaders/Render/Wall.shader
+  artifactKey: Guid(d721fafeca5a5a049b7bf58c5346ddec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PointCloudExplorer/Shaders/Render/Wall.shader using Guid(d721fafeca5a5a049b7bf58c5346ddec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fe8f7665883c88aa07b18b627da4ac98') in 0.002029 seconds
+  Import took 0.003046 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 169.718135 seconds.
+  path: Assets/PointCloudExplorer/Models/PointClouds
+  artifactKey: Guid(be4c63b0879abb641b17e5ee432fcfdd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PointCloudExplorer/Models/PointClouds using Guid(be4c63b0879abb641b17e5ee432fcfdd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '40e9adb3902ee6ad8a99777a60e97a30') in 0.001693 seconds
+  Import took 0.002626 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 3.679494 seconds.
+  path: Assets/PointCloudExplorer/Models/PointClouds/villa_dondi_dellorologio.asset
+  artifactKey: Guid(a6c307fca332c564ea4cf59b64ae8a3f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PointCloudExplorer/Models/PointClouds/villa_dondi_dellorologio.asset using Guid(a6c307fca332c564ea4cf59b64ae8a3f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0c0f5495cf4ec621404ebc7274a0f1fe') in 2.322786 seconds
+  Import took 2.333339 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000409 seconds.
+  path: Assets/PointCloudExplorer/Models/PointClouds/choshi-otaki_falls_oirase_valley_aomori.asset
+  artifactKey: Guid(e2f2afeba90e48244adac6eeafefa59d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PointCloudExplorer/Models/PointClouds/choshi-otaki_falls_oirase_valley_aomori.asset using Guid(e2f2afeba90e48244adac6eeafefa59d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '275be6059fb394237684109b75c000d2') in 0.904795 seconds
+  Import took 0.910371 seconds .
+
