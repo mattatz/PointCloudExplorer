@@ -11,7 +11,7 @@ PointCloudExplorer
 
 ![Transition](https://raw.githubusercontent.com/mattatz/PointCloudExplorer/master/Captures/Transition.gif)
 
-## Rendering with uniform grid
+## Rendering with uniform grids
 
 Rendering performance can be improved by dividing the point cloud into uniform grids.
 

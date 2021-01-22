@@ -15,7 +15,6 @@
 #include "Assets/Common/Shaders/Noise/SimplexNoise3D.hlsl"
 
 #include "../Common/Point.hlsl"
-#include "../Common/Path.hlsl"
 
 #ifndef HALF_PI
 #define HALF_PI 1.57079632679
